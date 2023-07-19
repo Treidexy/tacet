@@ -36,7 +36,7 @@ impl Assembler {
 	fn write_file_header(&mut self) {
 		let file_header = FileHeader {
 			magic: [ 0x7f, 0x45, 0x4c, 0x46 ],
-			bitlen: BitLen::x64,
+			bitlen: BitLen::X64,
 			endian: Endian::Little,
 			header_version: 1,
 			abi: ABI::SystemV,
@@ -44,7 +44,7 @@ impl Assembler {
 			_padding: [ 0; 7 ],
 
 			file_type: FileType::Executable,
-			arch: Arch::x86_64,
+			arch: Arch::X86_64,
 			elf_version: 1,
 			entry: self.assembly.code_info.virtual_address,
 			program_header_offset: 0x40,

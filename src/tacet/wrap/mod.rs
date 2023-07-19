@@ -3,7 +3,7 @@ pub struct Program {
 	pub insts: Vec<Inst>,
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Register {
 	Ax,
 	Cx,
@@ -13,6 +13,7 @@ pub enum Register {
 	Bp,
 	Si,
 	Di,
+
 	R8,
 	R9,
 	R10,
@@ -23,7 +24,7 @@ pub enum Register {
 	R15,
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum RegisterType {
 	Byte,
 	Word,
@@ -42,7 +43,7 @@ pub struct LoadSymbolPtrInst {
 	pub symbol_ref: SymbolRef,
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum SyscallName {
 	Write = 0x01,
 	Exit = 0x3c,
@@ -64,4 +65,14 @@ pub struct StringSymbol(pub Box<[u8]>);
 
 pub enum Symbol {
 	String(StringSymbol),
+}
+
+impl Register {
+	pub fn requires_extension(self) -> bool {
+		self as u8 >= 8
+	}
+
+	pub fn id8(self) -> u8 {
+		self as u8 % 8
+	}
 }

@@ -54,8 +54,8 @@ pub struct SectionHeader {
 #[derive(Clone, Copy)]
 #[repr(u8)]
 pub enum BitLen {
-	x32 = 1,
-	x64 = 2,
+	X32 = 1,
+	X64 = 2,
 }
 
 #[derive(Clone, Copy)]
@@ -113,7 +113,7 @@ pub enum Arch {
 	PowerPC = 0x14,
 	PowerPC64 = 0x15,
 	Arm = 0x28,
-	x86_64 = 0x3E,
+	X86_64 = 0x3E,
 	AArch64 = 0xB7,
 	RISCV = 0xF3,
 }
